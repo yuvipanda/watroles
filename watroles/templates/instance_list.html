@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block body %}
+{% for instance in instances %}
+<div class='instance-info'>
+    <h3>{{ instance.name }}</h3>
+    <p>In project <i><a href="{{ url_for('from_project', project=instance.project) }}">{{ instance.project }}</a></i> with internal IP {{ instance.ip }}</p>
+    <div>
+        <h4>Puppet roles</h5>
+        <ul>
+            {% for role in instance.roles %}
+            <li>
+                <a href="{{ url_for('with_role', role=role) }}">{{ role }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <h4>Puppet variables</h5>
+        <ul>
+            {% for variable, value in instance.vars.items() %}
+            <li>
+                <a href="{{ url_for('with_var', key=variable, value=value) }}">
+                {{ variable }}: {{ value }}
+                </a>
+            </li>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

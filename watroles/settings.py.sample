@@ -1,0 +1,3 @@
+LDAP_SERVER = 'neptunium.wikimedia.org'
+LDAP_BINDAS = 'cn=proxyagent,ou=profile,dc=wikimedia,dc=org',
+LDAP_PASSWORD = 'you can find this in /etc/ldap.conf'
