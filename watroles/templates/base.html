@@ -3,8 +3,20 @@
     <head>
         <title>{% block title %} {% endblock %}</title>
         <link rel="stylesheet" href="https://tools-static.wmflabs.org/cdnjs/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" />
+        <style>
+            body {
+                padding-top: 48px;
+            }
+        </style>
     </head>
     <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">watroles</a>
+                </div>
+            </div>
+        </nav>
         <div class="container">
             {% block body %}
             {% endblock %}
