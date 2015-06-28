@@ -41,6 +41,9 @@ def with_role(role):
 def with_var(key, value):
     # Keys can only be a-z, _, value is a little more lax but not
     # too much - any more complex queries can be done by the user by hand
+    # This could quite possibly be not enough validation for LDAP
+    # but the user being used to connect should have only readonly
+    # permissions and so it is ok.
     if not re.match(r'^[a-z_]+$', key) or not re.match('^[a-zA-Z0-9:_.-]+$', value):
         return 'Invalid key or value requested', 400
     return output_instances(g.conn.with_var(key, value))
