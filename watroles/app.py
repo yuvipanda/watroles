@@ -1,5 +1,5 @@
 import re
-from flask import Flask, render_template, g
+from flask import Flask, render_template, g, jsonify, request
 from query import Connection
 
 app = Flask(__name__)
@@ -21,6 +21,11 @@ def output_instances(instances):
     """
     # Sort by project by default
     instances.sort(key=lambda i: i.project)
+    if request.args.get('format', 'html') == 'json':
+        data = {
+            'instances': [i.to_dict() for i in instances]
+        }
+        return jsonify(data)
     return render_template('instance_list.html', instances=instances)
 
 

@@ -1,11 +1,15 @@
 import ldap3
-from collections import namedtuple
 
 
-Instance = namedtuple(
-    'Instance',
-    ['name', 'ip', 'project', 'roles', 'vars']
-)
+class Instance(object):
+    def __init__(self, **kwargs):
+        self.data = kwargs
+
+    def __getattr__(self, name):
+        return self.data[name]
+
+    def to_dict(self):
+        return self.data
 
 
 class Connection:
