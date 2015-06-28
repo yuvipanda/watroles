@@ -12,7 +12,7 @@ class Instance(object):
         return self.data
 
 
-class Connection:
+class Connection(object):
     def __init__(self, server, bindas, passwd):
         server = ldap3.Server(server)
         self.conn = ldap3.Connection(
