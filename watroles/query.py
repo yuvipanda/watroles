@@ -40,7 +40,7 @@ class Connection(object):
             hosts.append(Instance(
                 name=puppetvars['instancename'] if 'instancename' in puppetvars else None,
                 ip=ip,
-                roles=hostinfo['puppetClass'],
+                roles=hostinfo['puppetClass'] if 'puppetClass' in hostinfo else [],
                 vars=puppetvars,
                 project=puppetvars['instanceproject'] if 'instanceproject' in puppetvars else None
             ))
